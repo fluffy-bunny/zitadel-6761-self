@@ -30,7 +30,7 @@
     "angular-oauth2-oidc": "^15.0.1",
     "angularx-qrcode": "^16.0.0",
     "buffer": "^6.0.3",
-    "codemirror": "^5.65.8",
+    "codemirror": "^5.65.15",
     "cors": "^2.8.5",
     "file-saver": "^2.0.5",
     "flag-icons": "^6.7.0",
