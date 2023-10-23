@@ -1,0 +1,145 @@
+<div class="spinner-wr">
+  <mat-spinner diameter="30" *ngIf="loading" color="primary"></mat-spinner>
+</div>
+
+<h2>{{ 'POLICY.DOMAIN_POLICY.TITLE' | translate }}</h2>
+<cnsl-info-section *ngIf="isDefault"> {{ 'POLICY.DEFAULTLABEL' | translate }}</cnsl-info-section>
+
+<button
+  *ngIf="serviceType === PolicyComponentServiceType.MGMT && !isDefault"
+  matTooltip="{{ 'POLICY.RESET' | translate }}"
+  color="warn"
+  (click)="removePolicy()"
+  mat-stroked-button
+  [disabled]="
+    ([
+      serviceType === PolicyComponentServiceType.ADMIN
+        ? 'iam.policy.write'
+        : serviceType === PolicyComponentServiceType.MGMT
+        ? 'policy.write'
+        : ''
+    ]
+      | hasRole
+      | async) === false
+  "
+>
+  {{ 'POLICY.RESET' | translate }}
+</button>
+
+<div class="domain-policy-content" *ngIf="domainData">
+  <div class="row">
+    <mat-checkbox
+      color="primary"
+      name="hasNumber"
+      ngDefaultControl
+      [(ngModel)]="domainData.userLoginMustBeDomain"
+      [disabled]="
+        ([
+          serviceType === PolicyComponentServiceType.ADMIN
+            ? 'iam.policy.write'
+            : serviceType === PolicyComponentServiceType.MGMT
+            ? 'policy.write'
+            : ''
+        ]
+          | hasRole
+          | async) === false
+      "
+    >
+      {{ 'POLICY.DATA.USERLOGINMUSTBEDOMAIN' | translate }}
+    </mat-checkbox>
+  </div>
+
+  <cnsl-info-section>
+    <div>
+      <span>{{ 'POLICY.DATA.USERLOGINMUSTBEDOMAIN_DESCRIPTION' | translate }}</span>
+
+      <div class="loginname-preview">
+        <div class="left-right">
+          <div *ngIf="domainData.userLoginMustBeDomain"><small>domain</small><span>acme.com</span></div>
+          <div *ngIf="domainData.userLoginMustBeDomain"><small>username</small><span>john</span></div>
+          <div *ngIf="domainData.userLoginMustBeDomain"><small>loginname</small><span>john@acme.com</span></div>
+
+          <div *ngIf="!domainData.userLoginMustBeDomain"><small>domain</small><span>acme.com</span></div>
+          <div *ngIf="!domainData.userLoginMustBeDomain"><small>username</small><span>john@acme.com</span></div>
+          <div *ngIf="!domainData.userLoginMustBeDomain"><small>loginname</small><span>john@acme.com</span></div>
+        </div>
+        <i class="las la-arrow-right"></i>
+        <div class="left-right">
+          <div *ngIf="domainData.userLoginMustBeDomain"><small>domain</small><span>acme.com</span></div>
+          <div *ngIf="domainData.userLoginMustBeDomain"><small>username</small><span>john@acme.com</span></div>
+          <div *ngIf="domainData.userLoginMustBeDomain"><small>loginname</small><span>john@acme.com</span></div>
+
+          <div *ngIf="!domainData.userLoginMustBeDomain"><small>domain</small><span>acme.com</span></div>
+          <div *ngIf="!domainData.userLoginMustBeDomain"><small>username</small><span>john</span></div>
+          <div *ngIf="!domainData.userLoginMustBeDomain"><small>loginname</small><span>john@acme.com</span></div>
+        </div>
+      </div>
+    </div>
+  </cnsl-info-section>
+
+  <div class="row">
+    <mat-checkbox
+      color="primary"
+      name="hasNumber"
+      ngDefaultControl
+      [(ngModel)]="domainData.validateOrgDomains"
+      [disabled]="
+        ([
+          serviceType === PolicyComponentServiceType.ADMIN
+            ? 'iam.policy.write'
+            : serviceType === PolicyComponentServiceType.MGMT
+            ? 'policy.write'
+            : ''
+        ]
+          | hasRole
+          | async) === false
+      "
+    >
+      {{ 'POLICY.DATA.VALIDATEORGDOMAINS' | translate }}
+    </mat-checkbox>
+  </div>
+
+  <div class="row">
+    <mat-checkbox
+      color="primary"
+      name="hasNumber"
+      ngDefaultControl
+      [(ngModel)]="domainData.smtpSenderAddressMatchesInstanceDomain"
+      [disabled]="
+        ([
+          serviceType === PolicyComponentServiceType.ADMIN
+            ? 'iam.policy.write'
+            : serviceType === PolicyComponentServiceType.MGMT
+            ? 'policy.write'
+            : ''
+        ]
+          | hasRole
+          | async) === false
+      "
+    >
+      {{ 'POLICY.DATA.SMTPSENDERADDRESSMATCHESINSTANCEDOMAIN' | translate }}
+    </mat-checkbox>
+  </div>
+</div>
+
+<div class="btn-container">
+  <button
+    (click)="savePolicy()"
+    color="primary"
+    type="submit"
+    mat-raised-button
+    [disabled]="
+      ([
+        serviceType === PolicyComponentServiceType.ADMIN
+          ? 'iam.policy.write'
+          : serviceType === PolicyComponentServiceType.MGMT
+          ? 'policy.write'
+          : ''
+      ]
+        | hasRole
+        | async) === false
+    "
+  >
+    {{ 'ACTIONS.SAVE' | translate }}
+  </button>
+</div>
