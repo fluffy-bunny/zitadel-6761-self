@@ -3317,10 +3317,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-20.7.0.tgz#c03de4572f114a940bc2ca909a33ddb2b925e470"
   integrity sha512-zI22/pJW2wUZOVyguFaUL1HABdmSVxpXrzIqkjsHmyUjNhPoWM1CKfvVuXfetHhIok4RY573cqS0mZ1SJEnoTg==
 
-"@types/opentype.js@^1.3.4":
-  version "1.3.4"
-  resolved "https://registry.npmjs.org/@types/opentype.js/-/opentype.js-1.3.4.tgz"
-  integrity sha512-6fbXi67I07ugNM+FExwJnfuui2hD7hraD6nqjr3UnqsbBpxSkrtmO6tBubPdNAjqRT9TVkquVkNS9IkgTtq6/w==
+"@types/opentype.js@^1.3.7":
+  version "1.3.7"
+  resolved "https://registry.yarnpkg.com/@types/opentype.js/-/opentype.js-1.3.7.tgz#245dc8b3c0562ff936db1e913ed5dae09cf0bf65"
+  integrity sha512-Rm9MY99SKAYmgqOAi8oG984WEb0ej56MBP3C1IYqthqhSG68IgDqWn4kH/e8KZvGqW4r1LR35bkmVN1qTpgc/A==
 
 "@types/q@^0.0.32":
   version "0.0.32"
